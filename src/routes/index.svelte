@@ -1,6 +1,5 @@
 <script context="module">
 	import * as Blocks from '$components/blocks';
-	import { get } from 'svelte/store';
 	import { language } from '$stores';
 	import { getPage } from '$actions';
 

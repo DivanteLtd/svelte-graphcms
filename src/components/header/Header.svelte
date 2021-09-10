@@ -1,11 +1,11 @@
 <script>
 	import { page } from '$app/stores';
 	import logo from './svelte-logo.svg';
-	import { language } from "$stores";
-  	import { get } from "svelte/store";
+	import { language } from '$stores';
+	import { get } from 'svelte/store';
 
 	let selectedLanguage;
-	
+
 	let setLanguage = function () {
 		language.set(selectedLanguage);
 	};
@@ -15,8 +15,8 @@
 	});
 
 	const languages = [
-		{ value: "en", label: "EN", selected: true },
-		{ value: "pl", label: "PL", selected: false },
+		{ value: 'en', label: 'EN', selected: true },
+		{ value: 'pl', label: 'PL', selected: false }
 	];
 </script>
 
@@ -33,14 +33,18 @@
 		</svg>
 		<ul>
 			<li class:active={$page.path === '/'}><a sveltekit:prefetch href="/">Home</a></li>
-			<li class:active={$page.path === '/about-us'}><a sveltekit:prefetch href="/about-us">About Us</a></li>
-			<li class:active={$page.path === '/articles'}><a sveltekit:prefetch href="/articles">Articles</a></li>
+			<li class:active={$page.path === '/about-us'}>
+				<a sveltekit:prefetch href="/about-us">About Us</a>
+			</li>
+			<li class:active={$page.path === '/articles'}>
+				<a sveltekit:prefetch href="/articles">Articles</a>
+			</li>
 		</ul>
 		<select bind:value={selectedLanguage} on:change={setLanguage}>
 			{#each languages as language}
-			  <option selected={language.selected} value={language.value}>{language.label}</option>
+				<option selected={language.selected} value={language.value}>{language.label}</option>
 			{/each}
-		  </select>
+		</select>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
 		</svg>

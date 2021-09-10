@@ -1,3 +1,3 @@
 export const envs = {
-    gcms: import.meta.env.VITE_GCMS_ENDPOINT
+	gcms: import.meta.env.VITE_GCMS_ENDPOINT
 };

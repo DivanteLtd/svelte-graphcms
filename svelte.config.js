@@ -1,5 +1,6 @@
 /** @type {import('@sveltejs/kit').Config} */
-import { resolve } from "path";
+import vercel from '@sveltejs/adapter-vercel';
+import { resolve } from 'path';
 const config = {
 	kit: {
 		// hydrate the <div id="svelte"> element in src/app.html
@@ -12,7 +13,8 @@ const config = {
 					$actions: resolve('./src/actions')
 				}
 			}
-		}
+		},
+		adapter: vercel({ out: 'my-output-directory' })
 	}
 };
 
