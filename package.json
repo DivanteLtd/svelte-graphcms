@@ -1,6 +1,10 @@
 {
 	"name": "graphcmsPOC",
 	"version": "0.0.1",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/DivanteLtd/svelte-graphcms"
+	},
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
