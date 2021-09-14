@@ -38,6 +38,23 @@ const GET_PAGE = gql`
 						url
 					}
 				}
+				__typename
+				... on Form {
+					id
+					cta
+					formName
+					fields {
+						__typename
+						... on FormInput {
+							id
+							name
+							label
+							placeholder
+							type
+							required
+						}
+					}
+				}
 			}
 			title
 			slug
