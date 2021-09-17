@@ -2,6 +2,7 @@
 	import * as Blocks from '$components/blocks';
 	import { language } from '$stores';
 	import { getPage } from '$actions';
+	import { Card } from 'sveltestrap';
 
 	export async function load() {
 		return getPage('home');
@@ -30,12 +31,11 @@
 </svelte:head>
 
 <section>
-	<h1>{page.title}</h1>
+	<h1 class="text-center">{page.title}</h1>
 
 	{#each components as component, index}
-		<svelte:component this={component} data={page.pageBlocks[index]} />
+		<Card class="mb-3" body>
+			<svelte:component this={component} data={page.pageBlocks[index]} />
+		</Card>
 	{/each}
 </section>
-
-<style>
-</style>

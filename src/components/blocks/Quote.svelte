@@ -1,8 +1,11 @@
 <script>
 	export let data;
+	import { Jumbotron } from 'sveltestrap';
 </script>
 
-<div style="border: 1px solid #999">
-	<h1>Quote block</h1>
-	<div>{JSON.stringify(data)}</div>
-</div>
+<Jumbotron fluid class="p-3">
+	<h1 class="display-3">{data.quote}</h1>
+	<p class="lead">
+		{data.author}
+	</p>
+</Jumbotron>

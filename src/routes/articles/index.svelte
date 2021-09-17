@@ -18,6 +18,8 @@
 <script>
 	export let pagePromise;
 	export let postsPromise;
+	import { ListGroup, ListGroupItem } from 'sveltestrap';
+	import Time from 'svelte-time';
 
 	language.subscribe(() => {
 		update();
@@ -31,13 +33,16 @@
 
 {#await pagePromise then page}
 	<section>
-		<h1>{page.props.page.title}</h1>
+		<h1 class="text-center">{page.props.page.title}</h1>
+
 		{#await postsPromise then posts}
-			<ul>
+			<ListGroup>
 				{#each posts.postBlocks as post}
-					<li><a rel="prefetch" href="articles/{post.slug}">{post.title}</a></li>
+					<ListGroupItem tag="a" href="articles/{post.slug}" action
+						><b><Time timestamp={post.createdAt} /></b> / {post.title}</ListGroupItem
+					>
 				{/each}
-			</ul>
+			</ListGroup>
 		{:catch error}
 			<p style="color: red">{error.message}</p>
 		{/await}

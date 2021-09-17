@@ -15,7 +15,8 @@ const config = {
 			}
 		},
 		adapter: vercel({ out: 'my-output-directory' })
-	}
+	},
+	hydrate: true
 };
 
 export default config;
