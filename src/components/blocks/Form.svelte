@@ -1,6 +1,6 @@
 <script>
 	import * as Fields from '$components/blocks/fields';
-	import { Form, FormGroup, FormText, Input, Label, Button, Alert } from 'sveltestrap';
+	import { Form, Button, Alert } from 'sveltestrap';
 	export let data;
 	let visible = false;
 

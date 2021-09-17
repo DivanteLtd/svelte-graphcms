@@ -1,6 +1,5 @@
 <script>
 	import { FormGroup, Input, Label } from 'sveltestrap';
-	let radioGroup;
 	export let data;
 </script>
 
