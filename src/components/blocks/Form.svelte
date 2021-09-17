@@ -1,39 +1,33 @@
 <script>
 	import * as Fields from '$components/blocks/fields';
+	import { Form, FormGroup, FormText, Input, Label, Button, Alert } from 'sveltestrap';
 	export let data;
+	let visible = false;
+
 	const fields = data.fields.map((field) => {
 		return Fields[field.__typename];
 	});
 	let formInputs = {};
 	const onSubmit = (e) => {
+		e.preventDefault();
 		const formData = new FormData(e.target);
 		for (let field of formData) {
 			const [key, value] = field;
 			formInputs[key] = value;
 		}
+		visible = true;
 	};
 </script>
 
-<div style="border: 1px solid #999">
-	<h1>{data.formName}</h1>
+<h2>{data.formName}</h2>
 
-	<form on:submit|preventDefault={onSubmit}>
-		{#each fields as field, index}
-			<svelte:component this={field} data={data.fields[index]} />
-		{/each}
-		<button type="submit">{data.cta}</button>
-	</form>
-	{JSON.stringify(formInputs)}
-</div>
+<Form on:submit={onSubmit}>
+	{#each fields as field, index}
+		<svelte:component this={field} data={data.fields[index]} />
+	{/each}
+	<Button type="submit" color="primary">{data.cta}</Button>
+</Form>
 
-<style>
-	* {
-		box-sizing: border-box;
-	}
-	form {
-		display: flex;
-		flex-direction: column;
-		width: 300px;
-		margin: 0 auto;
-	}
-</style>
+<Alert color="success" class="mt-3" isOpen={visible} toggle={() => (visible = false)}>
+	{JSON.stringify(formInputs)}.
+</Alert>

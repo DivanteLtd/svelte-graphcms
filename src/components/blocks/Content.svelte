@@ -2,7 +2,8 @@
 	export let data;
 </script>
 
-<div style="border: 1px solid #999">
-	<h1>Content block</h1>
-	<div>{JSON.stringify(data)}</div>
-</div>
+<h2>{data.title}</h2>
+<p>{@html data.content.html}</p>
+{#if data.image}
+	<img src={data.image.url} alt={data.image.fileName} />
+{/if}

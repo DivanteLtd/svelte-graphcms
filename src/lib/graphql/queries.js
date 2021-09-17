@@ -28,6 +28,13 @@ const GET_PAGE = gql`
 				... on ContentBlock {
 					id
 					title
+					content {
+						html
+					}
+					image {
+						url
+						fileName
+					}
 				}
 				__typename
 				... on CarouselBlock {
@@ -55,6 +62,22 @@ const GET_PAGE = gql`
 						}
 					}
 				}
+				... on ChartBlock {
+					id
+					percentage
+					chartLabel
+					chartType
+					chartDataset {
+						__typename
+						... on ChartBlockDataset {
+							value
+							color {
+								css
+							}
+							label
+						}
+					}
+				}
 			}
 			title
 			slug
@@ -68,6 +91,10 @@ const GET_POSTS = gql`
 			id
 			slug
 			title
+			createdAt
+			content {
+				html
+			}
 			coverImage {
 				id
 				url
