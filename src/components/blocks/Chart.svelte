@@ -1,6 +1,6 @@
 <script>
 	export let data;
-	import Chart from 'chart.js/auto';
+	import Chart from 'chart.js/auto/auto.js';
 	$: isPercentage = data.percentage;
 	$: type = data.chartType.toLowerCase();
 	$: label = data.chartLabel;
